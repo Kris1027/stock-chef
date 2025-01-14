@@ -11,7 +11,6 @@ import { prisma } from '@/prisma/prisma';
 
 const IngredientList = async () => {
     const ingredients = await prisma.ingredient.findMany();
-    console.log(ingredients);
 
     return (
         <Table>
@@ -20,7 +19,6 @@ const IngredientList = async () => {
                 <TableRow>
                     <TableHead>Składnik</TableHead>
                     <TableHead>Ilość</TableHead>
-                    <TableHead>Data dodania</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -28,7 +26,6 @@ const IngredientList = async () => {
                     <TableRow key={ingredient.id}>
                         <TableCell>{ingredient.name}</TableCell>
                         <TableCell>{ingredient.quantity} gram</TableCell>
-                        <TableCell>{ingredient.createdAt.toLocaleDateString()}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
