@@ -7,16 +7,8 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-import { prisma } from '@/prisma/prisma';
 
-const DeliveryList = async () => {
-    const delivery = await prisma.delivery.findMany({
-        include: {
-            Ingredient: true,
-        },
-    });
-    console.log(delivery);
-
+const DeliveryList = async ({ delivery }) => {
     return (
         <Table>
             <TableCaption>Dostawy</TableCaption>

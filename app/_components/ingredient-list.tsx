@@ -7,11 +7,8 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-import { prisma } from '@/prisma/prisma';
 
-const IngredientList = async () => {
-    const ingredients = await prisma.ingredient.findMany();
-
+const IngredientList = async ({ ingredients }) => {
     return (
         <Table>
             <TableCaption>Stan Magazynowy</TableCaption>
