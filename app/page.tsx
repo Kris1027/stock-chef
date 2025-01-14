@@ -1,16 +1,39 @@
-import { prisma } from './lib/prisma';
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from '@/components/ui/table';
+import { prisma } from '@/prisma/prisma';
 
 const HomePage = async () => {
-    const ingredient = await prisma.ingredient.findMany();
+    const ingredients = await prisma.ingredient.findMany();
+
     return (
-        <div>
-            <h1>Home Page</h1>
-            <ul>
-                {ingredient.map((i) => (
-                    <li key={i.id}>{i.name}</li>
-                ))}
-            </ul>
-        </div>
+        <main>
+            <Table>
+                <TableCaption>Dostawy</TableCaption>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Składnik</TableHead>
+                        <TableHead>Ilość</TableHead>
+                        <TableHead>Data dostawy</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {ingredients.map((ingredient) => (
+                        <TableRow key={ingredient.id}>
+                            <TableCell>{ingredient.name}</TableCell>
+                            <TableCell>{ingredient.quantity} gram</TableCell>
+                            <TableCell>{ingredient.createdAt.toLocaleDateString()}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </main>
     );
 };
 
