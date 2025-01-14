@@ -35,6 +35,7 @@ const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) =>
                 <TableRow>
                     <TableHead>Składnik</TableHead>
                     <TableHead>Ilość</TableHead>
+                    <TableHead>Ostatnia dostawa</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -42,6 +43,7 @@ const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) =>
                     <TableRow key={ingredient.id}>
                         <TableCell>{ingredient.name}</TableCell>
                         <TableCell>{ingredient.quantity} gram</TableCell>
+                        <TableCell>{ingredient.updatedAt.toLocaleString()}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

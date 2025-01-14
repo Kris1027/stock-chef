@@ -43,7 +43,7 @@ const DeliveryList: React.FC<DeliveryListProps> = async ({ delivery }) => {
                     <TableRow key={d.id}>
                         <TableCell>{d.Ingredient?.name}</TableCell>
                         <TableCell>{d.newQuantity} gram</TableCell>
-                        <TableCell>{d.createdAt.toLocaleDateString()}</TableCell>
+                        <TableCell>{d.createdAt.toLocaleString()}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
