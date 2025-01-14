@@ -8,7 +8,7 @@ import {
     TableRow,
 } from '@/components/ui/table';
 
-interface IngredientProps {
+export interface IngredientProps {
     id: string;
     name: string;
     quantity: number;

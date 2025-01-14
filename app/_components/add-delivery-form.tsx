@@ -1,8 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { addDeliveryAction } from '../_actions/add-delivery-action';
+import { IngredientProps } from './ingredient-list';
 
-const AddDeliveryForm = ({ ingredients }) => {
+interface AddDeliveryFormProps {
+    ingredients: IngredientProps[];
+}
+
+const AddDeliveryForm: React.FC<AddDeliveryFormProps> = ({ ingredients }) => {
     return (
         <form action={addDeliveryAction} className='flex'>
             <select name='ingredient'>

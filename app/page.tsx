@@ -5,7 +5,11 @@ import IngredientList from './_components/ingredient-list';
 import AddDeliveryForm from './_components/add-delivery-form';
 
 const HomePage = async () => {
-    const ingredients = await prisma.ingredient.findMany();
+    const ingredients = await prisma.ingredient.findMany({
+        include: {
+            deliveries: true,
+        },
+    });
     const delivery = await prisma.delivery.findMany({
         include: {
             Ingredient: true,
