@@ -8,7 +8,26 @@ import {
     TableRow,
 } from '@/components/ui/table';
 
-const IngredientList = async ({ ingredients }) => {
+interface IngredientProps {
+    id: string;
+    name: string;
+    quantity: number;
+    createdAt: Date;
+    updatedAt: Date;
+    deliveries: {
+        id: string;
+        ingredientId?: string | null;
+        newQuantity: number;
+        createdAt: Date;
+        updatedAt: Date;
+    }[];
+}
+
+interface IngredientListProps {
+    ingredients: IngredientProps[];
+}
+
+const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) => {
     return (
         <Table>
             <TableCaption>Stan Magazynowy</TableCaption>

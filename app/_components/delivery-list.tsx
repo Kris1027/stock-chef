@@ -8,7 +8,26 @@ import {
     TableRow,
 } from '@/components/ui/table';
 
-const DeliveryList = async ({ delivery }) => {
+interface DeliveryProps {
+    id: string;
+    ingredientId?: string | null;
+    newQuantity: number;
+    createdAt: Date;
+    updatedAt: Date;
+    Ingredient?: {
+        id: string;
+        name: string;
+        quantity: number;
+        createdAt: Date;
+        updatedAt: Date;
+    } | null;
+}
+
+interface DeliveryListProps {
+    delivery: DeliveryProps[];
+}
+
+const DeliveryList: React.FC<DeliveryListProps> = async ({ delivery }) => {
     return (
         <Table>
             <TableCaption>Dostawy</TableCaption>
