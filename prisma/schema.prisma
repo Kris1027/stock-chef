@@ -14,15 +14,25 @@ datasource db {
 }
 
 model Ingredient {
-  id         String     @id @default(cuid())
-  name       String     @unique
-  quantity   Int        @default(0)
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
-  deliveries Delivery[]
+  id          String        @id @default(cuid())
+  name        String        @unique
+  quantity    Int           @default(0)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  deliveries  Delivery[]
+  Consumption Consumption[]
 }
 
 model Delivery {
+  id           String      @id @default(cuid())
+  Ingredient   Ingredient? @relation(fields: [ingredientId], references: [id])
+  ingredientId String?
+  newQuantity  Int
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Consumption {
   id           String      @id @default(cuid())
   Ingredient   Ingredient? @relation(fields: [ingredientId], references: [id])
   ingredientId String?
