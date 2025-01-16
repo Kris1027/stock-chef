@@ -7,6 +7,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import DeleteButton from './delete-button';
 
 export interface IngredientProps {
     id: string;
@@ -27,7 +28,7 @@ interface IngredientListProps {
     ingredients: IngredientProps[];
 }
 
-const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) => {
+const IngredientList: React.FC<IngredientListProps> = ({ ingredients }) => {
     return (
         <div className='h-screen overflow-scroll'>
             <Table>
@@ -39,6 +40,7 @@ const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) =>
                         <TableHead>Składnik</TableHead>
                         <TableHead>Ilość</TableHead>
                         <TableHead>Ostatnia dostawa</TableHead>
+                        <TableHead>Akcje</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -47,6 +49,9 @@ const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) =>
                             <TableCell>{ingredient.name}</TableCell>
                             <TableCell>{ingredient.quantity} kg</TableCell>
                             <TableCell>{ingredient.updatedAt.toLocaleString()}</TableCell>
+                            <TableCell>
+                                <DeleteButton id={ingredient.id} />
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
