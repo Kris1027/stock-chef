@@ -4,6 +4,7 @@ import DeliveryList from './_components/delivery-list';
 import IngredientList from './_components/ingredient-list';
 import AddDeliveryForm from './_components/add-delivery-form';
 import SubtractIngredientsForm from './_components/subtract-ingredients-form';
+import ConsumptionList from './_components/consumption-list';
 
 const HomePage = async () => {
     const ingredients = await prisma.ingredient.findMany({
@@ -12,6 +13,12 @@ const HomePage = async () => {
         },
     });
     const delivery = await prisma.delivery.findMany({
+        include: {
+            Ingredient: true,
+        },
+    });
+
+    const consumption = await prisma.consumption.findMany({
         include: {
             Ingredient: true,
         },
@@ -26,6 +33,7 @@ const HomePage = async () => {
             </div>
             <IngredientList ingredients={ingredients} />
             <DeliveryList delivery={delivery} />
+            <ConsumptionList consumption={consumption} />
         </main>
     );
 };

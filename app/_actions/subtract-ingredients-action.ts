@@ -16,5 +16,12 @@ export async function SubtractIngredientsAction(formData: FormData) {
         },
     });
 
+    await prisma.consumption.create({
+        data: {
+            quantity: newQuantity,
+            ingredientId: ingredientId,
+        },
+    });
+
     revalidatePath('/');
 }
