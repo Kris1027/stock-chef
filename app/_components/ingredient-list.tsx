@@ -45,7 +45,7 @@ const IngredientList: React.FC<IngredientListProps> = async ({ ingredients }) =>
                     {ingredients.map((ingredient) => (
                         <TableRow key={ingredient.id}>
                             <TableCell>{ingredient.name}</TableCell>
-                            <TableCell>{ingredient.quantity} gram</TableCell>
+                            <TableCell>{ingredient.quantity} kg</TableCell>
                             <TableCell>{ingredient.updatedAt.toLocaleString()}</TableCell>
                         </TableRow>
                     ))}

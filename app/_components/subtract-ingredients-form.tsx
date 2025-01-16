@@ -18,7 +18,7 @@ const SubtractIngredientsForm: React.FC<SubtractIngredientsFormProps> = ({ ingre
                     </option>
                 ))}
             </select>
-            <Input type='number' name='newQuantity' placeholder='ilość w gramach' />
+            <Input type='number' name='newQuantity' placeholder='ilość w kg' />
             <Button type='submit'>Odejmij</Button>
         </form>
     );
