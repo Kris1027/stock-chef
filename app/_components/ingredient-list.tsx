@@ -16,7 +16,7 @@ interface IngredientListProps {
 
 const IngredientList: React.FC<IngredientListProps> = ({ ingredients }) => {
     return (
-        <div className='h-screen overflow-scroll'>
+        <div>
             <Table>
                 <TableCaption className='caption-top font-semibold text-lg'>
                     Stan Magazynowy

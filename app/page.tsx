@@ -26,11 +26,9 @@ const HomePage = async () => {
 
     return (
         <main className='flex flex-col p-4 gap-4 max-w-4xl mx-auto'>
-            <div className='flex flex-col justify-around min-h-screen'>
-                <AddIngredientForm />
-                <AddDeliveryForm ingredients={ingredients} />
-                <SubtractIngredientsForm ingredients={ingredients} />
-            </div>
+            <AddIngredientForm />
+            <AddDeliveryForm ingredients={ingredients} />
+            <SubtractIngredientsForm ingredients={ingredients} />
             <IngredientList ingredients={ingredients} />
             <DeliveryList delivery={delivery} />
             <ConsumptionList consumption={consumption} />

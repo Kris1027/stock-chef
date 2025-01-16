@@ -29,7 +29,7 @@ interface DeliveryListProps {
 
 const DeliveryList: React.FC<DeliveryListProps> = async ({ delivery }) => {
     return (
-        <div className='h-screen overflow-scroll'>
+        <div>
             <Table>
                 <TableCaption className='caption-top font-semibold text-lg'>Dostawy</TableCaption>
                 <TableHeader>

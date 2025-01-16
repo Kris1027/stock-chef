@@ -29,7 +29,7 @@ interface ConsumptionListProps {
 
 const ConsumptionList: React.FC<ConsumptionListProps> = async ({ consumption }) => {
     return (
-        <div className='h-screen overflow-scroll'>
+        <div>
             <Table>
                 <TableCaption className='caption-top font-semibold text-lg'>Zużycie</TableCaption>
                 <TableHeader>
