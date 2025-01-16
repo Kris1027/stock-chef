@@ -4,14 +4,14 @@ export interface IngredientProps {
     quantity: number;
     createdAt: Date;
     updatedAt: Date;
-    deliveries: {
+    deliveries?: {
         id: string;
         ingredientId?: string | null;
         quantity: number;
         createdAt: Date;
         updatedAt: Date;
     }[];
-    consumption: {
+    consumption?: {
         id: string;
         ingredientId?: string | null;
         quantity: number;
