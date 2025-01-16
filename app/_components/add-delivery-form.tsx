@@ -1,7 +1,10 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { addDeliveryAction } from '../_actions/add-delivery-action';
-import { IngredientProps } from './ingredient-list';
+import Combobox from './combobox';
+import { IngredientProps } from '@/types/ingredients';
 
 interface AddDeliveryFormProps {
     ingredients: IngredientProps[];
@@ -9,18 +12,14 @@ interface AddDeliveryFormProps {
 
 const AddDeliveryForm: React.FC<AddDeliveryFormProps> = ({ ingredients }) => {
     return (
-        <form action={addDeliveryAction} className='flex flex-col gap-4'>
+        <div>
             <h2 className='text-center text-2xl font-bold'>Nowa dostawa</h2>
-            <select name='ingredient'>
-                {ingredients.map((i) => (
-                    <option key={i.id} value={i.id}>
-                        {i.name}
-                    </option>
-                ))}
-            </select>
-            <Input type='number' name='newQuantity' placeholder='ilość w kg' />
-            <Button type='submit'>Dodaj</Button>
-        </form>
+            <form action={addDeliveryAction} className='flex gap-4'>
+                <Combobox ingredients={ingredients} />
+                <Input type='number' name='newQuantity' placeholder='ilość w kg' />
+                <Button type='submit'>Dodaj</Button>
+            </form>
+        </div>
     );
 };
 

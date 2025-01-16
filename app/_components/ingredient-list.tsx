@@ -8,21 +8,7 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import DeleteButton from './delete-button';
-
-export interface IngredientProps {
-    id: string;
-    name: string;
-    quantity: number;
-    createdAt: Date;
-    updatedAt: Date;
-    deliveries: {
-        id: string;
-        ingredientId?: string | null;
-        newQuantity: number;
-        createdAt: Date;
-        updatedAt: Date;
-    }[];
-}
+import { IngredientProps } from '@/types/ingredients';
 
 interface IngredientListProps {
     ingredients: IngredientProps[];

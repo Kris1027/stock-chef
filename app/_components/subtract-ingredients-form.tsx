@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { IngredientProps } from './ingredient-list';
 import { SubtractIngredientsAction } from '../_actions/subtract-ingredients-action';
+import { IngredientProps } from '@/types/ingredients';
 
 interface SubtractIngredientsFormProps {
     ingredients: IngredientProps[];
