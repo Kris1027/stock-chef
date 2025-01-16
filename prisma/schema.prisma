@@ -27,7 +27,7 @@ model Delivery {
   id           String      @id @default(cuid())
   Ingredient   Ingredient? @relation(fields: [ingredientId], references: [id])
   ingredientId String?
-  newQuantity  Int
+  quantity     Int
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
 }

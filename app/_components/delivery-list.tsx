@@ -7,21 +7,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-
-interface DeliveryProps {
-    id: string;
-    ingredientId?: string | null;
-    newQuantity: number;
-    createdAt: Date;
-    updatedAt: Date;
-    Ingredient?: {
-        id: string;
-        name: string;
-        quantity: number;
-        createdAt: Date;
-        updatedAt: Date;
-    } | null;
-}
+import { DeliveryProps } from '@/types/delivery';
 
 interface DeliveryListProps {
     delivery: DeliveryProps[];
@@ -43,7 +29,7 @@ const DeliveryList: React.FC<DeliveryListProps> = async ({ delivery }) => {
                     {delivery.map((d) => (
                         <TableRow key={d.id}>
                             <TableCell>{d.Ingredient?.name}</TableCell>
-                            <TableCell>{d.newQuantity} kg</TableCell>
+                            <TableCell>{d.quantity} kg</TableCell>
                             <TableCell>{d.createdAt.toLocaleString()}</TableCell>
                         </TableRow>
                     ))}

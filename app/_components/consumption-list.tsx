@@ -7,24 +7,10 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-
-interface DeliveryProps {
-    id: string;
-    ingredientId?: string | null;
-    quantity: number;
-    createdAt: Date;
-    updatedAt: Date;
-    Ingredient?: {
-        id: string;
-        name: string;
-        quantity: number;
-        createdAt: Date;
-        updatedAt: Date;
-    } | null;
-}
+import { ConsumptionProps } from '@/types/consumption';
 
 interface ConsumptionListProps {
-    consumption: DeliveryProps[];
+    consumption: ConsumptionProps[];
 }
 
 const ConsumptionList: React.FC<ConsumptionListProps> = async ({ consumption }) => {

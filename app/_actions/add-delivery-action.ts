@@ -18,7 +18,7 @@ export async function addDeliveryAction(formData: FormData) {
 
     await prisma.delivery.create({
         data: {
-            newQuantity: newQuantity,
+            quantity: newQuantity,
             ingredientId: ingredientId,
         },
     });
