@@ -9,7 +9,8 @@ interface AddDeliveryFormProps {
 
 const AddDeliveryForm: React.FC<AddDeliveryFormProps> = ({ ingredients }) => {
     return (
-        <form action={addDeliveryAction} className='flex'>
+        <form action={addDeliveryAction} className='flex flex-col gap-4'>
+            <h2 className='text-center text-2xl font-bold'>Nowa dostawa</h2>
             <select name='ingredient'>
                 {ingredients.map((i) => (
                     <option key={i.id} value={i.id}>
