@@ -1,17 +1,9 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
 import { IngredientProps } from '@/types/ingredients';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { ChevronsUpDown } from 'lucide-react';
 import { useState } from 'react';
 
 interface ComboboxProps {
@@ -21,9 +13,14 @@ interface ComboboxProps {
 const Combobox: React.FC<ComboboxProps> = ({ ingredients }) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
+    const [search, setSearch] = useState('');
+
+    const filteredIngredients = ingredients.filter((ingredient) =>
+        ingredient.name.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
-        <div>
+        <div className='relative'>
             <input type='hidden' name='ingredient' value={value} />
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
@@ -39,44 +36,43 @@ const Combobox: React.FC<ComboboxProps> = ({ ingredients }) => {
                         <ChevronsUpDown className='opacity-50' />
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className='w-[200px] p-0'>
-                    <Command shouldFilter={true}>
-                        <CommandInput placeholder='Szukaj...' />
-                        <CommandList>
-                            <CommandEmpty>Nie ma takiego składnika</CommandEmpty>
-                            <CommandGroup>
-                                {ingredients.map((ingredient) => (
-                                    <CommandItem
-                                        key={ingredient.id}
-                                        value={ingredient.name.toLowerCase()}
-                                        onSelect={(currentValue) => {
-                                            const selectedIngredient = ingredients.find(
-                                                (item) => item.name.toLowerCase() === currentValue
-                                            );
-                                            if (selectedIngredient) {
-                                                setValue(
-                                                    selectedIngredient.id === value
-                                                        ? ''
-                                                        : selectedIngredient.id
-                                                );
+                <PopoverContent className='w-[200px] p-2'>
+                    <div className='space-y-2'>
+                        <Input
+                            placeholder='Szukaj...'
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className='h-8'
+                        />
+                        <div className='max-h-[300px] overflow-y-auto'>
+                            {filteredIngredients.length === 0 ? (
+                                <div className='text-sm text-muted-foreground py-2 text-center'>
+                                    Nie ma takiego składnika
+                                </div>
+                            ) : (
+                                <div className='space-y-1'>
+                                    {filteredIngredients.map((ingredient) => (
+                                        <Button
+                                            key={ingredient.id}
+                                            variant={
+                                                value === ingredient.id ? 'secondary' : 'ghost'
                                             }
-                                            setOpen(false);
-                                        }}
-                                    >
-                                        {ingredient.name}
-                                        <Check
-                                            className={cn(
-                                                'ml-auto',
-                                                value === ingredient.id
-                                                    ? 'opacity-100'
-                                                    : 'opacity-0'
-                                            )}
-                                        />
-                                    </CommandItem>
-                                ))}
-                            </CommandGroup>
-                        </CommandList>
-                    </Command>
+                                            className='w-full justify-start text-left'
+                                            onClick={() => {
+                                                setValue(
+                                                    value === ingredient.id ? '' : ingredient.id
+                                                );
+                                                setOpen(false);
+                                                setSearch('');
+                                            }}
+                                        >
+                                            {ingredient.name}
+                                        </Button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </PopoverContent>
             </Popover>
         </div>
